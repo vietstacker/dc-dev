@@ -3,7 +3,7 @@ kind: Application
 metadata:
   #change the name to match the cluster name this 
   #argocd agent is responsible for
-  name: cluster1
+  name: dc-cluster
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -11,11 +11,11 @@ spec:
   project: default
   source:
     #change the repoURL to point to your gitops repo
-    repoURL: https://github.com/<organisation>/<repo>.git
+    repoURL: https://github.com/vietstacker/dc-dev.git
     targetRevision: HEAD
     #change the path to point to the directory in the gitops repo
     #that represents the execution environment
-    path: deployment/execenv-cluster
+    path: deployment/dc-cluster
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
